@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "predev": "rimraf ./dist/",
     "start": "npm run dev",
-    "dev": "webpack --mode development",
-    "prod": "webpack --mode production"
+    "dev": "webpack --mode development --config webpack.config.dev.js",
+    "preprod": "rimraf ./dist/",
+    "prod": "webpack --mode production --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,12 @@
     "lodash-es": "^4.17.11"
   },
   "devDependencies": {
+    "css-loader": "^2.1.1",
+    "mini-css-extract-plugin": "^0.5.0",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "set-iterm2-badge": "0.0.4",
+    "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-deep-scope-plugin": "^1.6.0"
