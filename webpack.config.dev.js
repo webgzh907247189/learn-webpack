@@ -23,19 +23,6 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    // {
-                    //     loader: MiniCssExtractPlugin.loader,
-                    //     options: {
-                    //         // you can specify a publicPath here
-                    //         // by default it use publicPath in webpackOptions.output
-                    //         publicPath: '../'
-                    //     }
-                    // },
-                    // {
-                    //     loader: 'css-loader'
-                    // }
-
-
                     'style-loader',  // 与上面的loader(MiniCssExtractPlugin.loader) 冲突
                     {
                         loader: 'css-loader?modules&localIdentName=[name]_[local]-[hash:base64:5]'
@@ -46,14 +33,6 @@ module.exports = {
     },
     plugins: [
         new WebpackDeepScopeAnalysisPlugin(),
-
-
-        // new MiniCssExtractPlugin({
-        //     // Options similar to the same options in webpackOptions.output
-        //     // both options are optional
-        //     filename: "[name].css",
-        //     chunkFilename: "[id].css"
-        // }),
         new PurifyCSSPlugin({
             // Give paths to parse for rules. These should be absolute!
             paths: glob.sync(path.join(__dirname, './dist/*.html')),
