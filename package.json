@@ -1,5 +1,5 @@
 {
-  "name": "webpack",
+  "name": "webpack-learn",
   "version": "1.0.0",
   "description": "learn webpack 4.x",
   "main": "index.js",
@@ -20,6 +20,12 @@
   },
   "homepage": "https://github.com/webgzh907247189/webpack#readme",
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "lodash-es": "^4.17.11"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-deep-scope-plugin": "^1.6.0"
   }
 }
