@@ -1,0 +1,8 @@
+.test {
+    --fontColor: blue;
+    color: var(--fontColor)
+}
+
+.name{
+    color: red;
+}
