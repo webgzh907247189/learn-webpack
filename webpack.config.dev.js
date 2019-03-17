@@ -46,7 +46,7 @@ module.exports = {
             chunkFilename: "style/[id].css"
         }),
 
-        // new PurifyCSSPlugin({
+        // new PurifyCSSPlugin({   // 只会看 html 中 有没有class，如果模板没有，直接移除css
         //     // Give paths to parse for rules. These should be absolute!
         //     paths: glob.sync(path.join(__dirname, './dist/*.html')),
         // }),
