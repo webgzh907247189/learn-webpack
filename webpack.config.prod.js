@@ -15,7 +15,8 @@ module.exports = {
         index: './src/index.js'
     },
     output:{
-        filename: 'scripts/[name][hash:5].bundle.js',
+        // filename: 'scripts/[name][hash:5].bundle.js',
+        filename: 'scripts/[name].bundle.js',
         publicPath: '/'
     },
     module: {
@@ -45,9 +46,9 @@ module.exports = {
             filename: "[name].css",
             chunkFilename: "[id].css"
         }),
-        new PurifyCSSPlugin({
-            // Give paths to parse for rules. These should be absolute!
-            paths: glob.sync(path.join(__dirname, './dist/*.html')),
-        }),
+        // new PurifyCSSPlugin({
+        //     // Give paths to parse for rules. These should be absolute!
+        //     paths: glob.sync(path.join(__dirname, './dist/*.html')),
+        // }),
     ]
 }
