@@ -47,5 +47,8 @@ module.exports = {
             filename: 'index.html',
             template: './index.html'
         }),
+        /**
+         * CSS nano 解决单页的css
+         */
     ]
 }
