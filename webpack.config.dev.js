@@ -1,6 +1,7 @@
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 const PurifyCSSPlugin = require('purifycss-webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const glob = require('glob');
 const path = require('path');
 
@@ -25,8 +26,6 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            // you can specify a publicPath here
-                            // by default it use publicPath in webpackOptions.output
                             publicPath: '../'
                         }
                     },
@@ -38,12 +37,15 @@ module.exports = {
         ],
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './index.html'
         }),
+        new MiniCssExtractPlugin({
+            filename: "style/[name].css",
+            chunkFilename: "style/[id].css"
+        }),
+
         // new PurifyCSSPlugin({
         //     // Give paths to parse for rules. These should be absolute!
         //     paths: glob.sync(path.join(__dirname, './dist/*.html')),
