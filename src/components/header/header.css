@@ -3,3 +3,6 @@
     color: var(--fontColor)
 }
 
+.name{
+    clear: red;
+}
