@@ -47,5 +47,14 @@ module.exports = {
             filename: 'index.html',
             template: './index.html'
         }),
-    ]
+    ],
+    devServer: {
+        port: 9000,
+        hot: true,
+        before(app){
+            app.get('/test',(req,res)=>{
+                res.json({name: 'test'})
+            })
+        }
+    }
 }

@@ -37,6 +37,13 @@ module.exports = {
             },
         ],
     },
+    optimization: {
+        // splitChunks: {
+        // },
+        runtimeChunk: {
+            name: 'runtime'
+        }
+    },
     plugins: [
         new WebpackDeepScopeAnalysisPlugin(),
         new MiniCssExtractPlugin({

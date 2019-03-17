@@ -8,7 +8,7 @@
     "clearDist": "rimraf ./dist/",
     "predev": "npm run clearDist",
     "start": "npm run dev",
-    "dev": "webpack --mode development --config webpack.config.dev.js",
+    "dev": "webpack-dev-server --mode development --config webpack.config.dev.js",
     "preprod": "npm run clearDist",
     "prod": "webpack --mode production --config webpack.config.prod.js"
   },
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/webgzh907247189/webpack#readme",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.11",
     "lodash-es": "^4.17.11"
   },
@@ -37,6 +38,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-deep-scope-plugin": "^1.6.0"
+    "webpack-deep-scope-plugin": "^1.6.0",
+    "webpack-dev-server": "^3.2.1"
   }
 }
