@@ -8,3 +8,7 @@ import { AppService } from './app.service';
   providers: [AppService],
 })
 export class AppModule {}
+
+/**
+ * module -> service 注入 controller
+ */
