@@ -1,3 +1,7 @@
+/**
+ * https://juejin.im/post/5b07d02a6fb9a07aa213c9bc
+ * webpack 产线配置
+ */
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -43,12 +47,22 @@ module.exports = {
     optimization: {
         splitChunks: {
             cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    minSize: 30000,
+                    minChunks: 1,
+                    chunks: 'initial',
+                    priority: 1 // 该配置项是设置处理的优先级，数值越大越优先处理
+                },
                 commons: {
-                    // chunks: 'initial',
-                    // name: 'common',
-                    // minChunks: 1,
-                    // maxInitialRequests: 5,
-                    // minSize: 0
+                    test: /[\\/]src[\\/]common[\\/]/,
+                    name: 'commons',
+                    minSize: 30000,
+                    minChunks: 3,
+                    chunks: 'initial',
+                    priority: -1,
+                    reuseExistingChunk: true // 这个配置允许我们使用已经存在的代码块
                 }
             }
         },
