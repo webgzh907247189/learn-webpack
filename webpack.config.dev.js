@@ -1,9 +1,6 @@
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
-const PurifyCSSPlugin = require('purifycss-webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const glob = require('glob');
-const path = require('path');
 
 // const setIterm2Badge = require('set-iterm2-badge');
 // setIterm2Badge('prod环境');
@@ -36,6 +33,22 @@ module.exports = {
                 ],
             },
         ],
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    chunks: 'initial',
+                    name: 'common',
+                    minChunks: 1,
+                    maxInitialRequests: 5,
+                    minSize: 0
+                }
+            }
+        },
+        runtimeChunk: {
+            name: 'runtime'
+        }
     },
     plugins: [
         new WebpackDeepScopeAnalysisPlugin(),
