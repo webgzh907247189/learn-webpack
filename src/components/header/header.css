@@ -3,6 +3,12 @@
     color: var(--fontColor)
 }
 
+.box {
+    --fontColor: yellow;
+    color: var(--fontColor)
+}
+
 .name{
     color: red;
+    display: flex;
 }
