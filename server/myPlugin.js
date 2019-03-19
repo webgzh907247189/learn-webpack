@@ -4,22 +4,13 @@ class htmlBeforeWebpackPlugin {
     apply(compiler) {
         compiler.hooks.compilation.tap(pluginName, compilation => {
             compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tap(pluginName,htmlPluginData => {
-                const jsList = htmlPluginData.assets.js;
                 let _html = htmlPluginData.html
-                
-                let resultJsStr = jsList.reduce((result,item)=>{
-                    result += `<script src='${item}'></script> \n`
-                    return result
-                },'')
 
-                let cssList = htmlPluginData.assets.css
-                let resultCssStr = cssList.reduce((result,item)=>{
-                    result += `<link href="${item}" rel="stylesheet"> \n`
-                    return result
-                },'')
+                const jsList = htmlPluginData.assets.js;
+                const cssList = htmlPluginData.assets.css
 
-                _html = _html.replace('<!--rejectjs-->',resultJsStr)
-                _html = _html.replace('<!--rejectcss-->',resultCssStr)
+                _html = _html.replace('<!--rejectjs-->',getlist(jsList,'<script src="{0}"></script> \n'))
+                _html = _html.replace('<!--rejectcss-->',getlist(cssList,'<link href="{0}" rel="stylesheet"> \n'))
 
                 htmlPluginData.html = _html
             })
@@ -27,3 +18,10 @@ class htmlBeforeWebpackPlugin {
     }
 }
 module.exports = htmlBeforeWebpackPlugin
+
+function getlist(arr,str){
+    return arr.reduce((result,item)=>{
+            result += str.replace('{0}', item)
+            return result
+    },'')
+}
