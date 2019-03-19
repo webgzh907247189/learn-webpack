@@ -1,15 +1,13 @@
 {% extends './layout.html' %}
 
     {% block styles %}
-    <link href="/index.css" rel="stylesheet"></head>
+    <!--rejectcss-->
     {% endblock %}
 
     {% block content %}
-    <div>{{message}}</div>
+    {% include "../../src/components/header/header.html"%}
     {% endblock %}
 
   {% block scripts %}
-  <script>
-    console.log('我是index的int')
-  </script>
+  <!--rejectjs-->
   {% endblock %}}
