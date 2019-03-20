@@ -8,6 +8,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
+const os = require('os')
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
 
 // const setIterm2Badge = require('set-iterm2-badge');
 // setIterm2Badge('prod环境');
@@ -15,7 +18,7 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const argv = require('yargs-parser')(process.argv.slice(2))
 const _mode = argv.mode || 'development'
 
-module.exports = {
+module.exports =  smp.wrap({
     entry:{
         index: './src/index.js'
     },
@@ -73,7 +76,7 @@ module.exports = {
             new UglifyJsPlugin({
                 exclude: /\.min\.js$/, // 过滤掉以".min.js"结尾的文件，我们认为这个后缀本身就是已经压缩好的代码，没必要进行二次压缩
                 cache: true,
-                parallel: true, // 开启并行压缩，充分利用cpu
+                parallel: os.cpus().length - 1,//true, // 开启并行压缩，充分利用cpu (多核压缩)
                 sourceMap: false,
                 extractComments: false, // 移除注释
                 uglifyOptions: {
@@ -114,4 +117,4 @@ module.exports = {
         }),
         new InlineManifestWebpackPlugin('runtime')
     ]
-}
+})
