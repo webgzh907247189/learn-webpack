@@ -1,6 +1,10 @@
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const DashboardPlugin = require("webpack-dashboard/plugin");
+const setTitle = require('node-bash-title');
+setTitle('webpack  Server');
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 
 // const setIterm2Badge = require('set-iterm2-badge');
 // setIterm2Badge('prod环境');
@@ -60,6 +64,11 @@ module.exports = {
             filename: 'index.html',
             template: './index.html'
         }),
+        new DashboardPlugin(),
+        new WebpackBuildNotifierPlugin({
+            title: "Webpack Build",
+            suppressSuccess: true
+        })
     ],
     devServer: {
         port: 9000,

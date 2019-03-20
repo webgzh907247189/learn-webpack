@@ -9,8 +9,11 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const os = require('os')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
+
+
 
 // const setIterm2Badge = require('set-iterm2-badge');
 // setIterm2Badge('prod环境');
@@ -115,6 +118,7 @@ module.exports =  smp.wrap({
             filename: 'index.html',
             template: './index.html'
         }),
-        new InlineManifestWebpackPlugin('runtime')
+        new InlineManifestWebpackPlugin('runtime'),
+        new ProgressBarPlugin(),
     ]
 })
