@@ -6,6 +6,11 @@
     <title>webpack</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <%= htmlWebpackPlugin.options.loading.html %>
+    </div>
   </body>
+  <!-- 一份编译一份不编译 -->
+  <!-- <script type="module" src="xxx.js"></script>
+  <script nomodule src="xxx.es5.js"></script> -->
 </html>

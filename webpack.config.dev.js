@@ -35,6 +35,7 @@ module.exports = {
                         loader: 'css-loader?modules&localIdentName=[name]_[local]-[hash:base64:5]'
                     }
                 ],
+                exclude: /node_modules/
             },
         ],
     },
@@ -62,7 +63,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './index.html'
+            template: './index.html',
+            loading: {
+                html: 'hello'
+            }
         }),
         new DashboardPlugin(),
         new WebpackBuildNotifierPlugin({

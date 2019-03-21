@@ -19,4 +19,15 @@
 
     let 的编译过程 
 }
-2. 
+
+2. 动态的polyfill   https://cdn.polyfill.io/v2/polyfill.min.js?features=Map,flat
+https://polyfill.io/v3/url-builder/     动态 polyfill
+https://zhuanlan.zhihu.com/p/37148975   文章(优化相关)
+  
+3. 缓存js的版本号  webpack-manifest-plugin
+4. 骨架屏
+5. 检测打包的大小 ci/cd    bundlesize
+6. 分析包的大小  https://github.com/alexkuz/webpack-chart
+7. test include exclude 注意loader的排除
+8. 多核压缩 webpack-parallel-uglify-plugin 可以压缩js || es
+9. happypack  cache-loader 
