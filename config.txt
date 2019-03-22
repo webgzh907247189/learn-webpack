@@ -1,0 +1,33 @@
+============    开发阶段    =============
+1. 开启多核压缩                                 uglifyjs-webpack-plugin
+2. 监控面板 plugin loader的消耗时间              speed-measure-webpack-plugin
+3. 开启通知面板                                 webpack-build-notifier
+4. 开启打包进度                                 progress-bar-webpack-plugin
+5. 开发面板更清晰                               webpack-dashboard
+6. 修改bash标题                                 node-bash-title
+7. 窗口打印信息                                 webpack-dashboard
+
+============    上线阶段    =============
+1. es6不编译 (做两份,编译之后会很大)
+{
+    try{
+	    throw 5
+    }catch(a){
+        console.log(a)
+    }
+    不利于GC(因为catch)
+
+    let 的编译过程 
+}
+
+2. 动态的polyfill   https://cdn.polyfill.io/v2/polyfill.min.js?features=Map,flat
+https://polyfill.io/v3/url-builder/     动态 polyfill
+https://zhuanlan.zhihu.com/p/37148975   文章(优化相关)
+  
+3. 缓存js的版本号  webpack-manifest-plugin
+4. 骨架屏
+5. 检测打包的大小 ci/cd    bundlesize
+6. 分析包的大小  https://github.com/alexkuz/webpack-chart
+7. test include exclude 注意loader的排除
+8. 多核压缩 webpack-parallel-uglify-plugin 可以压缩js || es
+9. happypack  cache-loader 

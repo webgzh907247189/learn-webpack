@@ -9,8 +9,11 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const os = require('os')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
+const ManifestPlugin = require('webpack-manifest-plugin');
+
 
 // const setIterm2Badge = require('set-iterm2-badge');
 // setIterm2Badge('prod环境');
@@ -44,6 +47,7 @@ module.exports =  smp.wrap({
                         loader: 'postcss-loader'
                     }
                 ],
+                exclude: /node_modules/
             },
         ],
     },
@@ -83,7 +87,8 @@ module.exports =  smp.wrap({
                     compress: {
                         unused: true,
                         warnings: false,
-                        drop_debugger: true
+                        drop_debugger: true,
+                        drop_console: true // 删除所有的 `console` 语句
                     },
                     output: {
                         comments: false
@@ -113,8 +118,13 @@ module.exports =  smp.wrap({
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './index.html'
+            template: './index.html',
+            loading: {
+                html: 'hello'
+            }
         }),
-        new InlineManifestWebpackPlugin('runtime')
+        new InlineManifestWebpackPlugin('runtime'),
+        new ProgressBarPlugin(),
+        new ManifestPlugin()
     ]
 })
