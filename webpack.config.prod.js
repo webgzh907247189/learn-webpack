@@ -13,7 +13,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
 const ManifestPlugin = require('webpack-manifest-plugin');
-
+const path = require('path')
 
 // const setIterm2Badge = require('set-iterm2-badge');
 // setIterm2Badge('prod环境');
@@ -45,6 +45,15 @@ module.exports =  smp.wrap({
                     },
                     {
                         loader: 'postcss-loader'
+                    }
+                ],
+                exclude: /node_modules/
+            },
+            {
+                test: /\.js$/,
+                use: [
+                    {
+                        loader: path.resolve('./loader/index.js')
                     }
                 ],
                 exclude: /node_modules/

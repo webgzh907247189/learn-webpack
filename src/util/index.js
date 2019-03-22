@@ -1,10 +1,10 @@
-import lodash from 'lodash-es';
+import {isArray} from 'lodash-es';
 
 function a(){
     console.log('函数a')
 }
 function b(args){
-    var result = lodash.isArray(args)
+    var result = isArray(args)
     console.log('函数b')
 }
 
