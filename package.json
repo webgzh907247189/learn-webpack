@@ -32,6 +32,8 @@
     "lodash-es": "^4.17.11"
   },
   "devDependencies": {
+    "acorn": "^6.1.1",
+    "acorn-walk": "^6.1.1",
     "autoprefixer": "^9.5.0",
     "css-loader": "^2.1.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
