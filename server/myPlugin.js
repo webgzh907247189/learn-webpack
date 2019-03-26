@@ -1,4 +1,6 @@
 const pluginName = 'htmlAfterWebpackPlugin';
+const ora = require('ora');
+const spinner = ora('开始').start();
 
 class htmlBeforeWebpackPlugin {
     apply(compiler) {
@@ -13,6 +15,7 @@ class htmlBeforeWebpackPlugin {
                 _html = _html.replace('<!--rejectcss-->',getlist(cssList,'<link href="{0}" rel="stylesheet"> \n'))
 
                 htmlPluginData.html = _html
+                spinner.succeed('构建成功')
             })
         });
     }
